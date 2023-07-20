@@ -3,6 +3,8 @@ package calibration;
 import java.util.ArrayList;
 import java.util.List;
 
+import biggerproblems.JulianUtil;
+
 public class Day2Exercises {
 	
 	public static boolean isPrime(int n) {
@@ -74,6 +76,7 @@ public class Day2Exercises {
 	
 	public static void main(String[] args) {
 		System.out.println(amicablePairsUpto(10000));
+		System.out.println(JulianUtil.toJulian("19/07/2023"));
 	}
 	
 }
