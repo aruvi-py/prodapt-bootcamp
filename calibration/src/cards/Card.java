@@ -2,31 +2,35 @@ package cards;
 
 public class Card {
 	
-	int rank;
-	int suit;
+	private final int rank;
+	private final int suit;
 	
-	static final String ABBR_RANKS = " A23456789TJQK";
-	static final String ABBR_SUITS = " CDHS";
+	public static final String ABBR_RANKS = " A23456789TJQK";
+	public static final String ABBR_SUITS = " CDHS";
 	
-	static final int MIN_RANK = 1;
-	static final int MAX_RANK = 13;
-	static final int MIN_SUIT = 1;
-	static final int MAX_SUIT = 4;
+	private static final int MIN_RANK = 1;
+	private static final int MAX_RANK = 13;
+	private static final int MIN_SUIT = 1;
+	private static final int MAX_SUIT = 4;
 	
-	static final int CLUBS = 1;
-	static final int DIAMONDS = 2;
-	static final int HEARTS = 3;
-	static final int SPADES = 4;
+	public static final int CLUBS = 1;
+	public static final int DIAMONDS = 2;
+	public static final int HEARTS = 3;
+	public static final int SPADES = 4;
 	
-	static final String BLACK = "Black";
-	static final String RED = "Red";
+	public static final String BLACK = "Black";
+	public static final String RED = "Red";
 	
 	public Card(int newRank, int newSuit) {
 		if (newRank > MAX_RANK || newRank < MIN_RANK) {
 			System.out.println("hey, not allowed, expect invalid behaviour");
+			rank = 0;
+			suit = 0;
 		}
 		else if (newSuit > MAX_SUIT || newSuit < MIN_SUIT) {
 			System.out.println("hey, not allowed, expect invalid behaviour");
+			rank = 0;
+			suit = 0;
 		}
 		else {
 			rank = newRank;
@@ -41,16 +45,28 @@ public class Card {
 	 * and S is one among CDHS
 	 */
 	public Card(String abbr) {
-		rank = ABBR_RANKS.indexOf(abbr.charAt(0));
-		if (rank == -1) {
+		int parsedRank = ABBR_RANKS.indexOf(abbr.charAt(0));
+		if (parsedRank == -1) {
 			System.out.println("Invalid rank, expect invalid behaviour");
 			rank = 0;
 		}
-		suit = ABBR_SUITS.indexOf(abbr.charAt(1));
-		if (suit == -1) {
+		else
+			rank = parsedRank;
+		int parsedSuit = ABBR_SUITS.indexOf(abbr.charAt(1));
+		if (parsedSuit == -1) {
 			System.out.println("Invalid suit, expect invalid behaviour");
 			suit = 0;
 		}
+		else
+			suit = parsedSuit;
+	}
+	
+	public int getRank() {
+		return rank;
+	}
+	
+	public int getSuit() {
+		return suit;
 	}
 	
 	public String color() {
