@@ -23,7 +23,7 @@ public class Day2Exercises {
 	}
 	
 	public static List<Integer> primeFactors(int n) {
-		List<Integer> primes = listPrimes((int) Math.sqrt(n) + 1);
+		List<Integer> primes = listPrimes(n / 2 + 1);
 		List<Integer> primeFactors = new ArrayList<>();
 		for (Integer prime : primes)
 			if (n % prime == 0)
@@ -75,6 +75,8 @@ public class Day2Exercises {
 	}
 	
 	public static void main(String[] args) {
+		
+		System.out.println(primeFactors(15));
 		System.out.println(amicablePairsUpto(10000));
 		System.out.println(JulianUtil.toJulian("19/07/2023"));
 	}

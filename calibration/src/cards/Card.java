@@ -8,10 +8,10 @@ public class Card {
 	public static final String ABBR_RANKS = " A23456789TJQK";
 	public static final String ABBR_SUITS = " CDHS";
 	
-	private static final int MIN_RANK = 1;
-	private static final int MAX_RANK = 13;
-	private static final int MIN_SUIT = 1;
-	private static final int MAX_SUIT = 4;
+	public static final int MIN_RANK = 1;
+	public static final int MAX_RANK = 13;
+	public static final int MIN_SUIT = 1;
+	public static final int MAX_SUIT = 4;
 	
 	public static final int CLUBS = 1;
 	public static final int DIAMONDS = 2;
@@ -87,5 +87,13 @@ public class Card {
 	@Override
 	public String toString() {
 		return ABBR_RANKS.substring(rank, rank+1) + ABBR_SUITS.substring(suit, suit+1);
+	}
+	
+	@Override
+	public boolean equals(Object other) {
+		if (!(other instanceof Card))
+			return false;
+		Card otherCard = (Card) other;
+		return this.rank == otherCard.rank && this.suit == otherCard.suit;
 	}
 }

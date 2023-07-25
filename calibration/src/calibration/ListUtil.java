@@ -22,6 +22,13 @@ public class ListUtil {
 		return temp;
 	}
 	
+	public static boolean contains(Integer[] nums, Integer item) {
+		for (Integer num : nums)
+			if (item.equals(num))
+				return true;
+		return false;
+	}
+	
 	public static void main(String[] args) {
 		int[] arr = {1, 2, 3, 4, 5};
 		System.out.println(Arrays.toString(append(arr, 6)));
