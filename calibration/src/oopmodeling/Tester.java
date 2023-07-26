@@ -1,5 +1,8 @@
 package oopmodeling;
 
+import yahtzee.Die;
+import yahtzee.LoadedDie;
+
 public class Tester {
 	public static void main(String[] args) {
 		Point p = new Point(1, 2);
@@ -10,5 +13,12 @@ public class Tester {
 		Point q = new Point(p);
 		System.out.println(q);
 		
+		Die d = new Die();
+		LoadedDie ld = new LoadedDie();
+		d.roll();
+		ld.roll();
+		System.out.println(d.show());
+		System.out.println(ld.show());
+		System.out.println(ld);
 	}
 }
