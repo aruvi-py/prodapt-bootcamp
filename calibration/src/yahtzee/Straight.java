@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class Straight implements CategoryScorer{
+public class Straight extends LowerCategory{
 	
 	public static final int SMALL = 4;
 	public static final int LARGE = 5;
@@ -18,7 +18,15 @@ public class Straight implements CategoryScorer{
 	
 	private int seqLength;
 	
+	private static String getName(int seqLength) {
+		if (seqLength == SMALL)
+			return "Small Straight";
+		else
+			return "Large Straight";
+	}
+	
 	public Straight(int seqLength) {
+		super(getName(seqLength));
 		if (!(seqLength == SMALL || seqLength == LARGE))
 			seqLength = 0;
 		this.seqLength = seqLength;

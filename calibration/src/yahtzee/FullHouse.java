@@ -6,9 +6,13 @@ import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class FullHouse implements CategoryScorer{
+public class FullHouse extends LowerCategory{
 	
 	private static final int FULL_HOUSE_SCORE = 25;
+	
+	public FullHouse() {
+		super("Full House");
+	}
 	
 	@Override
 	public int score(List<? extends Die> dice) {

@@ -23,15 +23,16 @@ public class Hand {
 	}
 	
 	public void sortByRankThenSuit() {
-		Collections.sort(cards, 
-				((c1, c2) -> (
-						c1.getRank() == c2.getRank() 
-						? 
-						Integer.compare(c1.getSuit(), c2.getSuit())
-						: 
-						Integer.compare(c1.getRank(), c2.getRank())
-						))
-				);
+//		Collections.sort(cards, 
+//				((c1, c2) -> (
+//						c1.getRank() == c2.getRank() 
+//						? 
+//						Integer.compare(c1.getSuit(), c2.getSuit())
+//						: 
+//						Integer.compare(c1.getRank(), c2.getRank())
+//						))
+//				);
+		Collections.sort(cards, new CardComparator());
 	}
 	
 	public Hand sortedByRankThenSuit() {

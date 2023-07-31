@@ -97,10 +97,13 @@ public class Yahtzee {
 		CategoryScorer smallStraight = new Straight(4);
 		CategoryScorer largeStraight = new Straight(5);
 		CategoryScorer yahtzee = new MultiplesOfAKind(5);
+		CategoryScorer fullHouse = new FullHouse();
 		System.out.println(ones.score(dice));
 		System.out.println(smallStraight.score(dice));
 		System.out.println(largeStraight.score(dice));
 		System.out.println(yahtzee.score(dice));
+		System.out.println(yahtzee);
+		System.out.println(fullHouse);
 		//play();
 	}
 }

@@ -4,7 +4,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class MultiplesOfAKind implements CategoryScorer{
+public class MultiplesOfAKind extends LowerCategory{
 	
 	public static final int THREE_OF_A_KIND = 3;
 	public static final int FOUR_OF_A_KIND = 4;
@@ -14,8 +14,21 @@ public class MultiplesOfAKind implements CategoryScorer{
 	
 	int numMultiples;
 	
+	private static String getName(int numMultiples) {
+		switch(numMultiples) {
+		case(THREE_OF_A_KIND):
+			return "Three of a Kind";
+		case (FOUR_OF_A_KIND):
+			return "Four of a Kind";
+		default:
+			return "Yahtzee";
+		}
+	}
+	
 	public MultiplesOfAKind(int numMultiples) {
+		super(getName(numMultiples));
 		this.numMultiples = numMultiples;
+		
 	}
 	
 	@Override
