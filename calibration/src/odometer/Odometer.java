@@ -1,5 +1,9 @@
 package odometer;
 
+import odometer.exceptions.NonAscendingReadingException;
+import odometer.exceptions.ReadingException;
+import odometer.exceptions.ReadingSizeMismatchException;
+
 public class Odometer {
 	
 	private static final String DIGITS = "123456789";
@@ -30,9 +34,11 @@ public class Odometer {
 		return reading;
 	}
 	
-	public void setReading(int reading) throws Exception{
+	public void setReading(int reading) throws ReadingException {
 		if (!isAscending(reading))
-			throw new Exception("Reading has to have all its digits in strictly ascending order");
+			throw new NonAscendingReadingException("Reading has to have all its digits in strictly ascending order. (got: " + reading + ")");
+		else if (getSize(reading) != getSize(this.reading))
+			throw new ReadingSizeMismatchException("Reading has to be the same size as the previous reading. (Existing: " + this.reading + " got : " + reading + ")");
 		else
 			this.reading = reading;
 	}
