@@ -11,7 +11,7 @@ public class Odometer {
 	}
 	
 	private static int getMaxReading(int size) {
-		return Integer.valueOf(DIGITS.substring(size - 1, DIGITS.length()));
+		return Integer.valueOf(DIGITS.substring(DIGITS.length() - size, DIGITS.length()));
 	}
 	
 	private static int getSize(int reading) {
@@ -60,10 +60,11 @@ public class Odometer {
 	
 	
 	public void incrementReading() {
-		if (reading == getMaxReading(getSize(reading)))
-			reading = getMinReading(getSize(reading));
 		do {
-			reading++;
+			if (reading == getMaxReading(getSize(reading)))
+				reading = getMinReading(getSize(reading));
+			else
+				reading++;
 		} while (!isAscending(reading));
 	}
 	
@@ -72,5 +73,21 @@ public class Odometer {
 		temp.incrementReading();
 		return temp;
 	}
-
+	
+	public void decrementReading() {
+		do {
+			if (reading == getMinReading(getSize(reading)))
+				reading = getMaxReading(getSize(reading));
+			else
+				reading--;
+		} while (!isAscending(reading));
+	}
+	
+	public void reset() {
+		this.reading = getMinReading(getSize(this.reading));
+	}
+	
+	public int getSize() {
+		return getSize(this.reading);
+	}
 }
