@@ -1,0 +1,28 @@
+Aug 02, 2023 3:15:27 PM odometer.Odometer incrementReading_aroundBody3$advice
+FINE: Entering incrementReading
+Aug 02, 2023 3:15:28 PM odometer.Odometer incrementReading_aroundBody3$advice
+FINE: Exiting incrementReading
+Aug 02, 2023 3:15:28 PM odometer.Odometer setReading_aroundBody1$advice
+FINE: Entering setReading
+Aug 02, 2023 3:15:28 PM odometer.Odometer setReading_aroundBody1$advice
+FINE: Entering setReading
+Aug 02, 2023 3:15:28 PM odometer.Odometer setReading_aroundBody1$advice
+SEVERE: trouble found
+odometer.exceptions.NonAscendingReadingException: Reading has to have all its digits in strictly ascending order. (got: 10234)
+	at odometer.Odometer.setReading_aroundBody0(Odometer.java:41)
+	at odometer.Odometer.setReading_aroundBody1$advice(Odometer.java:43)
+	at odometer.Odometer.setReading(Odometer.java:1)
+	at odometer.Testing.main(Testing.java:18)
+
+Aug 02, 2023 3:15:28 PM odometer.Odometer setReading_aroundBody1$advice
+SEVERE: trouble found
+odometer.exceptions.NonAscendingReadingException: Reading has to have all its digits in strictly ascending order. (got: 10234)
+	at odometer.Odometer.setReading_aroundBody0(Odometer.java:41)
+	at odometer.Odometer.setReading_aroundBody1$advice(Odometer.java:43)
+	at odometer.Odometer.setReading(Odometer.java:1)
+	at odometer.Testing.main(Testing.java:18)
+
+Aug 02, 2023 3:15:28 PM odometer.Odometer setReading_aroundBody1$advice
+FINE: Exiting setReading
+Aug 02, 2023 3:15:28 PM odometer.Odometer setReading_aroundBody1$advice
+FINE: Exiting setReading

@@ -12,7 +12,7 @@ public class OdometerController {
 	}
 	
 	public void increment() {
-		odometer.incrementReading();
+		odometer.increment();
 	}
 	
 	public void decrement() {

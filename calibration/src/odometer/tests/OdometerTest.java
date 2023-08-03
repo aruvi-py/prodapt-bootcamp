@@ -20,14 +20,14 @@ class OdometerTest {
 	
 	@Test
 	void testIncrementNonRollOver() {
-		o.incrementReading();
+		o.increment();
 		assertEquals(12346, o.getReading());
 	}
 	
 	@Test
 	void testIncrementRollOver() throws ReadingException {
 		o.setReading(56789);
-		o.incrementReading();
+		o.increment();
 		assertEquals(12345, o.getReading());
 	}
 
