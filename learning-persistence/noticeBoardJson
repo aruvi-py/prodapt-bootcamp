@@ -1,0 +1,46 @@
+{
+  "notices": [
+    {
+      "title": "Monday 15 Aug is a holiday!",
+      "content": "It is Independence day",
+      "contact": {
+        "name": "Aruvi",
+        "phoneNumber": "9xxxxxxxxx"
+      },
+      "creationTime": {
+        "date": {
+          "year": 2023,
+          "month": 8,
+          "day": 3
+        },
+        "time": {
+          "hour": 13,
+          "minute": 27,
+          "second": 22,
+          "nano": 668904757
+        }
+      }
+    },
+    {
+      "title": "Monday 15 Aug is a holiday!",
+      "content": "It is Independence day",
+      "contact": {
+        "name": "Bruvi",
+        "phoneNumber": "9xxxxxxxxx"
+      },
+      "creationTime": {
+        "date": {
+          "year": 2023,
+          "month": 8,
+          "day": 3
+        },
+        "time": {
+          "hour": 13,
+          "minute": 29,
+          "second": 14,
+          "nano": 341133040
+        }
+      }
+    }
+  ]
+}
