@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <h1>Notices</h1>
+        <div class="noticeboard">
+            <div class="notice" id="notice0">
+                <div class="title">Title 1</div>
+                <div class="contents">Contents 1</div>
+                <div class="contact">
+                    <div class="name">Contact name 1</div>
+                    <div class="number">Contact number 1</div>
+                </div>
+            </div>
+            <div class="notice" id="notice1">
+                <div class="title">Title 2</div>
+                <div class="contents">Contents 2</div>
+                <div class="contact">
+                    <div class="name">Contact name 2</div>
+                    <div class="number">Contact number 2</div>
+                </div>
+            </div>
+        </div>
+        <button onclick="reorder()">Click me!</button>
+        <script>
+            function reorder() {
+                var items = document.getElementsByClassName("notice");
+                var temp = items[0];
+                items[0] = items[1];
+                items[1] = temp;
+                for (let i = 0; i < items.length; i++) {
+                    items[i].parentNode.appendChild(items[i]);
+                }
+            }
+        </script>
+    </body>
+</html>

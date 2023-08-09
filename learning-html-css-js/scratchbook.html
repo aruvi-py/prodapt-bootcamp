@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <h1>Adding paragraphs!</h1>
+        <div id="messages">
+            <p id="info-msg">Your messages below:</p>
+        </div>
+        <input id="myText" type="text" value="prepopulated">
+        <button onclick="addParagraph(this)">Click me!</button>
+        <button onclick="toggleHide(this, 'newText')">Hide all</button>
+        <script>
+
+            document.body.onload = () => {
+                var elem = document.getElementsByTagName("h1")[0];
+                elem.textContent = "I've been edited by a script";
+            }
+
+            function toggleHide(elem, className) {
+                if (elem.textContent == "Hide all") {
+                    elem.textContent = "Show all";
+                    hideAll(className);
+                } else {
+                    elem.textContent = "Hide all";
+                    showAll(className);
+                }
+            }
+
+            function hide(elem) {
+                elem.hidden = true;
+            }
+
+            function show(elem) {
+                elem.hidden = false;
+            }
+
+            function hideAll(className) {
+                var elems = document.getElementsByClassName(className);
+                for (let i = 0; i < elems.length; i++) {
+                    hide(elems[i]);
+                }
+            }
+
+            function showAll(className) {
+                var elems = document.getElementsByClassName(className);
+                for (let i = 0; i < elems.length; i++) {
+                    show(elems[i]);
+                }
+            }
+
+            function addParagraph(arg0) {
+                console.log(arg0);
+                var elem = document.createElement("p");
+                const myText = document.getElementById("myText").value;
+                var myTextNode = document.createTextNode(myText);
+                elem.className = "newText"
+                elem.appendChild(myTextNode);
+                document.getElementById("messages").appendChild(elem);
+            }
+        </script>
+    </body>
+</html>

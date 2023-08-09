@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <ul id="myList">
+            <li id="li0">1</li>
+            <li id="li1">2</li>
+        </ul>
+        <input type="text" id="inp">
+        <button onclick="add('li', 'myList', 'inp', 'li', 6)">Add!</button>
+        <script>
+
+            function highestId(elemList, idPrefix) {
+                let highestId = -1;
+                for (let i = 0; i < elemList.length; i++) {
+                    if (parseInt(elemList[i].id.replace(idPrefix, '')) > highestId)
+                        highestId = i;
+                }
+                return highestId;
+            }
+
+            function lowestId(elemList, idPrefix) {
+                let lowestId = elemList.length;
+                for (let i = 0; i < elemList.length; i++) {
+                    if (parseInt(elemList[i].id.replace(idPrefix, '')) < lowestId)
+                        lowestId = i;
+                }
+                return lowestId;
+            }
+
+            function add(elementTag, parentId, inputId, idPrefix, limit) {
+                const textToAdd = document.getElementById(inputId).value;
+                let listParent = document.getElementById(parentId);
+                let listElems = listParent.children;
+                const newElem = document.createElement(elementTag);
+                newElem.id = idPrefix + (highestId(listElems, idPrefix) + 1);
+                newElem.textContent = textToAdd;
+                if (listElems.length >= limit) {
+                    let lowest = lowestId(listElems, idPrefix);
+                    listParent.removeChild(listElems[lowest])
+                    listParent.appendChild(newElem);
+                }
+                else {
+                    listParent.append(newElem);
+                }
+            }
+        </script>
+    </body>
+</html>
