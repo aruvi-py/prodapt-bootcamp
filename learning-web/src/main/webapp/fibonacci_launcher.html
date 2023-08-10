@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<p>Prepare the URL by entering a limit below and clicking "prepare"</p>
+	<input type="text" name="limit" id="limit">
+	<button onclick="populate()">Prepare</button>
+	<p><a id="link" href="fibonacci?n=">Generate Fibonaccis</a></p>
+	<form action="fibonacci" method="post">
+		<input type="text" name="formLimit" id="formLimit" required="true">
+		<input type="submit" value="SUBMIT!">
+	</form>
+	<script>
+		function populate() {
+			let limit = document.getElementById("limit").value;
+			document.getElementById("link").href += limit;
+			window.location.href = "fibonacci?n=" + limit;
+		}
+	</script>
+</body>
+</html>
