@@ -1,0 +1,4 @@
+Sachin Tendulkar
+Category1, 100.0, true
+Category2, 50.5, false
+Category3, 80.0, true
