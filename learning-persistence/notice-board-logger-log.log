@@ -1,0 +1,32 @@
+Aug 16, 2023 10:59:58 AM noticeboard.JsonFilePersistence load
+WARNING: Problems reading from file
+java.nio.file.NoSuchFileException: /home/test.txt
+	at java.base/sun.nio.fs.UnixException.translateToIOException(UnixException.java:92)
+	at java.base/sun.nio.fs.UnixException.rethrowAsIOException(UnixException.java:106)
+	at java.base/sun.nio.fs.UnixException.rethrowAsIOException(UnixException.java:111)
+	at java.base/sun.nio.fs.UnixFileSystemProvider.newFileChannel(UnixFileSystemProvider.java:224)
+	at java.base/java.nio.channels.FileChannel.open(FileChannel.java:308)
+	at java.base/java.nio.channels.FileChannel.open(FileChannel.java:367)
+	at java.base/java.nio.file.Files.lines(Files.java:4107)
+	at java.base/java.nio.file.Files.lines(Files.java:4202)
+	at noticeboard.JsonFilePersistence.load(JsonFilePersistence.java:47)
+	at noticeboard.NoticeBoardTester.main(NoticeBoardTester.java:13)
+
+Aug 16, 2023 11:01:36 AM noticeboard.JsonFilePersistence load
+SEVERE: Problems reading from file
+com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1 path $
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:397)
+	at com.google.gson.Gson.fromJson(Gson.java:1227)
+	at com.google.gson.Gson.fromJson(Gson.java:1137)
+	at com.google.gson.Gson.fromJson(Gson.java:1047)
+	at com.google.gson.Gson.fromJson(Gson.java:982)
+	at noticeboard.JsonFilePersistence.load(JsonFilePersistence.java:52)
+	at noticeboard.NoticeBoardTester.main(NoticeBoardTester.java:13)
+Caused by: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1 path $
+	at com.google.gson.stream.JsonReader.beginObject(JsonReader.java:393)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:386)
+	... 6 more
+
+Aug 16, 2023 11:02:04 AM noticeboard.NoticeBoard add
+FINE: 2023-08-16T11:02:04.194573896: Notice(title=Monday 15 Aug is a holiday!, content=It is Independence day, contact=Contact(name=Bruvi, phoneNumber=9xxxxxxxxx), creationTime=2023-08-16T11:02:03.939342509) was added.
+
