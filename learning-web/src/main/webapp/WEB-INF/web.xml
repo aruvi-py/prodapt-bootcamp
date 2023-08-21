@@ -30,4 +30,8 @@
     <servlet-name>FibonacciServlet</servlet-name>
     <url-pattern>/fibonacci</url-pattern>
   </servlet-mapping>
+<!--   <servlet> -->
+<!--   	<servlet-name>PasswordValidationServlet</servlet-name> -->
+<!--   	<servlet-class>com.learning.hello.PasswordValidationServlet</servlet-class> -->
+<!--   </servlet> -->
 </web-app>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>HiLo</title>
+</head>
+<body>
+<!DOCTYPE html>
+            <html>
+              <head>
+                <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+              </head>
+              <body>
+                <h1>Welcome to the game of Hi/Lo</h1>
+                <form method="post" action="hilo">
+                  <label for="guess">Your guess</label>
+                  <input type="text" id="guess" name="guess">
+                  <input type="submit" value="Guess!">
+                </form>
+                <h2>Computer's responses:</h2>
+                <p><span th:text="${feedback}">This is gonna get replaced</span></p>
+              </body>
+            </html>
+</body>
+</html>
