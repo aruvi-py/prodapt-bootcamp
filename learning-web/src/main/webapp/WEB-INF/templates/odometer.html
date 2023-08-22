@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="static/odometerStyles.css">
+<title>Odometer</title>
+</head>
+<body>
+	<h1>Odometer</h1>
+	<div class="odometerContent">
+		<span class="reading" th:text = "${reading}">12345</span>
+		<form class="modForm" action="" method="post">
+			<input type="submit" class="mutateButton" name="action" value="prev">
+			<input type="submit" class="mutateButton" name="action" value="next">
+		</form>
+	</div>
+</body>
+</html>

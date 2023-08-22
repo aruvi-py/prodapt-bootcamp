@@ -3,6 +3,7 @@
 	<name>learning-web</name>
 	<comment></comment>
 	<projects>
+		<project>calibration</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

@@ -1,0 +1,30 @@
+@charset "UTF-8";
+
+.mutateButton {
+	text-transform: capitalize;
+}
+
+.odometerContent {
+	display: block;
+	width: max-content;
+	margin-left: auto;
+	margin-right: auto;
+	
+}
+
+.reading {
+	border: 10px solid #24D5CF;
+	/* padding: 10% 10% 10% 10%;*/
+	margin-bottom: 20%;
+}
+
+.modForm {
+	padding-top: 20%;
+	padding-bottom: 20%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+h1 {
+	text-align: center;
+}
