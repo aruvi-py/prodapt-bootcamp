@@ -4,17 +4,17 @@ import com.learning.hello.contoller.exception.UnsupportedActionException;
 
 import odometer.Odometer;
 
-public class OdometerController {
+public class OdometerModel {
   private Odometer odometer;
-  private static OdometerController inst;
+  private static OdometerModel inst;
   
-  private OdometerController() {
+  private OdometerModel() {
     
   }
   
-  public static OdometerController get() {
+  public static OdometerModel get() {
     if (inst == null) {
-      inst = new OdometerController();
+      inst = new OdometerModel();
     }
     return inst;
   }
