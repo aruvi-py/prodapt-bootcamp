@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h2>Already Registered players:</h2>
+	<table>
+      <tr>
+        <th>Card</th>
+        <th>Bet</th>
+        <th>Orientation</th>
+      </tr>
+      <tr th:each="player : ${game.players}">
+        <td th:text="${player.card}">🂡</td>
+        <td th:text="${player.bet}">100</td>
+        <td th:text="${player.orientation}">IN</td>
+      </tr>
+    </table>
+<table>
+	<tr>
+		<th>In Pile</th>
+	</tr>
+	<tr th:each="card: ${game.in}">
+		<td th:text="${card}">🂡</td>
+	</tr>
+</table>
+<table>
+	<tr>
+		<th>Out Pile</th>
+	</tr>
+	<tr th:each="card: ${game.out}">
+		<td th:text="${card}">🂡</td>
+	</tr>
+</table>
+<p th:text="${winner}">The winner</p>
+<div th:unless="${hasWinner}">
+<form method="post" action="">
+	<input type="submit" value="Deal!">
+</form>
+</div>
+</body>
+</html>

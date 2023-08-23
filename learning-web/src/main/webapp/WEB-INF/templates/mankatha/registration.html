@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Registration for players</title>
+</head>
+<body>
+	<form method="post" action="">
+		<label for="card">Card</label>
+		<input type="text" id="card" name="card">
+		<label for="bet">Bet</label>
+		<input type="text" id="bet" name="bet">
+		<label for="orientation">Orientation</label>
+		<select name="orientation" id="orientation">
+			<option value="in">IN</option>
+			<option value="out">OUT</option>
+		</select>
+		<input type="submit" value="Register">
+	</form>
+	<form method="post" action="./reset">
+		<input type="submit" value="RESET">
+	</form>
+	<h2>Already Registered players:</h2>
+	<table>
+      <tr>
+        <th>Card</th>
+        <th>Bet</th>
+        <th>Orientation</th>
+      </tr>
+      <tr th:each="player : ${players}">
+        <td th:text="${player.card}">🂡</td>
+        <td th:text="${player.bet}">100</td>
+        <td th:text="${player.orientation}">IN</td>
+      </tr>
+    </table>
+	<a href="./play">Play!</a>
+</body>
+</html>

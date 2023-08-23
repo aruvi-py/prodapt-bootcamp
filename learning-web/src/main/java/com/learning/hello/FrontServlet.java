@@ -40,9 +40,12 @@ public class FrontServlet extends HttpServlet{
   
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-    // TODO Call the correct controller to deal with this.
     String path = req.getPathInfo();
     IController controller = ControllerFactory.get(path);
+    if (controller == null) {
+      resp.sendError(404, path + "not supported");
+      return;
+    }
     final IWebExchange webExchange = 
         this.application.buildExchange(req, resp);
     try {

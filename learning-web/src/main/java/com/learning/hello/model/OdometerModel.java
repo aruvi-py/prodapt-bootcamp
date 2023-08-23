@@ -1,4 +1,4 @@
-package com.learning.hello.contoller;
+package com.learning.hello.model;
 
 import com.learning.hello.contoller.exception.UnsupportedActionException;
 

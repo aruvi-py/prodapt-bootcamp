@@ -9,6 +9,9 @@ public class ControllerFactory {
   static {
     controllers = new HashMap<>();
     controllers.put("/odometer", new OdometerControllerNew());
+    controllers.put("/mankatha/register", new MankathaRegistration());
+    controllers.put("/mankatha/reset", new MankathaReset());
+    controllers.put("/mankatha/play", new MankathaPlay());
   }
   
   public static IController get(String path) {

@@ -9,8 +9,8 @@ import org.thymeleaf.templateresolver.WebApplicationTemplateResolver;
 import org.thymeleaf.web.IWebExchange;
 import org.thymeleaf.web.servlet.JakartaServletWebApplication;
 
-import com.learning.hello.contoller.OdometerModel;
 import com.learning.hello.contoller.exception.UnsupportedActionException;
+import com.learning.hello.model.OdometerModel;
 
 import jakarta.servlet.ServletConfig;
 import jakarta.servlet.ServletException;
