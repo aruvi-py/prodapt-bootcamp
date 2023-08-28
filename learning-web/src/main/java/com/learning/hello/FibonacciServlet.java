@@ -39,15 +39,16 @@ public class FibonacciServlet extends HttpServlet {
     //Generate the fibonacci sequence up to n numbers where n is the value defined by the query parameter "n".
     //i.e. the request looks like localhost:8080/learning-web/fibonacci?n=10
     //the response should be HTML-formatted comma-separated fibonacci numbers.
-    PrintWriter out = response.getWriter();
-    if (request.getParameter("n") == null) {
-      out.println("This is not the way to access this resource. Please give a value for the parameter 'n' in your query ");
-      return;
-    } else {
-      int limit = Integer.valueOf(request.getParameter("n"));
-
-      out.println(String.format("<p>%s</p>", fibonaccis(limit)));
-    }
+//    PrintWriter out = response.getWriter();
+//    if (request.getParameter("n") == null) {
+//      out.println("This is not the way to access this resource. Please give a value for the parameter 'n' in your query ");
+//      return;
+//    } else {
+//      int limit = Integer.valueOf(request.getParameter("n"));
+//
+//      out.println(String.format("<p>%s</p>", fibonaccis(limit)));
+//    }
+    request.getRequestDispatcher("/test.jsp").forward(request, response);
   }
 
   @Override

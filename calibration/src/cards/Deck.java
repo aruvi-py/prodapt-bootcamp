@@ -9,10 +9,14 @@ public class Deck {
 	private List<Card> cards;
 	
 	public Deck() {
-		cards = new ArrayList<>();
-		for (int rank = Card.MIN_RANK; rank <= Card.MAX_RANK; rank++)
-			for (int suit = Card.MIN_SUIT; suit <= Card.MAX_SUIT; suit++)
-				cards.add(new Card(rank, suit));
+		init();
+	}
+	
+	private void init() {
+	  cards = new ArrayList<>();
+      for (int rank = Card.MIN_RANK; rank <= Card.MAX_RANK; rank++)
+          for (int suit = Card.MIN_SUIT; suit <= Card.MAX_SUIT; suit++)
+              cards.add(new Card(rank, suit));
 	}
 	
 	public Card removeFromTop() {
@@ -29,6 +33,10 @@ public class Deck {
 	
 	public void shuffle() {
 		Collections.shuffle(cards);
+	}
+	
+	public void reset() {
+	  init();
 	}
 	
 	@Override

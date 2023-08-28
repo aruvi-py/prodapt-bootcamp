@@ -12,6 +12,8 @@ public class ControllerFactory {
     controllers.put("/mankatha/register", new MankathaRegistration());
     controllers.put("/mankatha/reset", new MankathaReset());
     controllers.put("/mankatha/play", new MankathaPlay());
+    controllers.put("/classroom", new StudentController());
+    controllers.put("/pokemon", new PokemonTypeFetch());
   }
   
   public static IController get(String path) {

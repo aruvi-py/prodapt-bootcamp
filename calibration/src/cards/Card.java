@@ -84,9 +84,24 @@ public class Card {
 			return rank > 10;
 	}
 	
+	private int getStartingCodePointFor(int rank) {
+	  switch(rank) {
+	  case SPADES:
+	    return 0x1F0A0;
+	  case HEARTS:
+	    return 0x1F0B0;
+	  case DIAMONDS:
+	    return 0x1F0C0;
+	  case CLUBS:
+	    return 0x1F0D0;
+	  }
+	  return 0;
+	}
+	
 	@Override
 	public String toString() {
-		return ABBR_RANKS.substring(rank, rank+1) + ABBR_SUITS.substring(suit, suit+1);
+	    int codePoint = getStartingCodePointFor(suit) + rank;
+		return Character.toString(codePoint);
 	}
 	
 	@Override
@@ -95,5 +110,9 @@ public class Card {
 			return false;
 		Card otherCard = (Card) other;
 		return this.rank == otherCard.rank && this.suit == otherCard.suit;
+	}
+	
+	public static void main(String[] args) {
+	  System.out.println(new Card("7C"));
 	}
 }

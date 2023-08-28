@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Greetings!</title>
+</head>
+<body>
+	<h1>Wordle</h1>
+	<p th:text="${guess}">The latest guess</p>
+	<form method="post">
+		<input name="feed1" type="text">
+		<input name="feed2" type="text">
+		<input name="feed3" type="text">
+		<input name="feed4" type="text">
+		<input name="feed5" type="text">
+		<input type="submit" value="Feedback!">
+	</form>
+</body>
+</html>

@@ -85,6 +85,48 @@ public class OpenHouseDiscussions {
 		return Arrays.stream(operands).sum();
 	}
 	
+	public static Pair<Integer> divMod(int dividend, int divisor) {
+	  return new Pair<>(dividend / divisor, dividend % divisor);
+	}
+	
+	public static boolean update(int[] scores, int winner) {
+	  int loser = winner == 0 ? 1 : 0;
+	  if (scores[winner] < 3 || 
+	      (scores[winner] == 3 && scores[loser] == 3)) {
+	    scores[winner]++;
+	    return false;
+	  }
+	  else {
+	    if (scores[winner] == 4 || scores[loser] < 3) {
+	      scores[0] = scores[1] = 0;
+	      return true;
+	    }
+	    else {
+	      scores[loser]--;
+	      return false;
+	    }
+	  }
+	}
+	
+	public static boolean altUpdate(int[] scores, int winner) {
+	  scores[winner]++;
+	  if (scores[winner] > 3) {
+	    if (diff(scores) >= 2) {
+	      scores[0] = scores[1] = 0;
+	      return true;
+	    }
+	    else if (diff(scores) == 0) {
+	      scores[0] = scores[1] = 3;
+	      return false;
+	    }
+	  }
+	  return false;
+	}
+	
+	private static int diff(int[] scores) {
+	  return Math.abs(scores[0] - scores[1]);
+	}
+	
 	public static void main(String[] args) {
 //		Path source = Path.of("/home/aruvi/Downloads/sowpods.txt");
 //		Path target = Path.of("/home/aruvi/prodapt/calibration/sowpods-5letteronly.txt");
@@ -103,9 +145,14 @@ public class OpenHouseDiscussions {
 //		} catch (Exception e) {
 //			e.printStackTrace();
 //		}
-		Integer[] nums = {1, 2, 3, 4, 1, 2, 3};
-		List<Integer> numList = Arrays.asList(nums);
-		System.out.println(min(numList, 5));
+//		Integer[] nums = {1, 2, 3, 4, 1, 2, 3};
+//		List<Integer> numList = Arrays.asList(nums);
+//		System.out.println(min(numList, 5));
+//	    System.out.println(divMod(25, 3));
+	    int[] scores = {3, 3};
+	    System.out.println(altUpdate(scores, 0));
+	    System.out.println(Arrays.toString(scores));
+	    
 	}
 
 }

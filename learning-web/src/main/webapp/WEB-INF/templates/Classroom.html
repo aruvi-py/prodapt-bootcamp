@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	.wrapper {
+		 display: grid;
+ 		 grid-template-columns: repeat(5, 1fr);
+  		 gap: 10px;
+	}
+	.odd {
+		background-color: lightgray;
+	}
+</style>
+</head>
+<body>
+	<div class="wrapper">
+		<p th:each="student, iterStat : ${studentlist}" th:text="${student}" th:class="${iterStat.odd}? 'odd'">Student</p>
+	</div>
+	<form method="post">
+		<label for="name">Name</label>
+		<input type="text" id="name" name="name">
+		<input type="submit" value="Add!">
+	</form>
+		
+</body>
+</html>
