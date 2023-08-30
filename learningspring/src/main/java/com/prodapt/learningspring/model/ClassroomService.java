@@ -1,22 +1,37 @@
-package com.prodapt.learningspring.model.wordle;
+package com.prodapt.learningspring.model;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.ModelAttribute;
+
+import com.prodapt.learningspring.model.dao.StudentDAO;
 
 @Component
-public class Classroom {
+public class ClassroomService {
   private List<Student> students;
   private static int idCounter = 1;
+  
+  @Autowired
+  private StudentDAO studentDAO;
 
-  public Classroom() {
-    students = new ArrayList<>();
+  public ClassroomService() {
+    if (students == null)
+      students = new ArrayList<>();
+  }
+  
+  public void sync() {
+    students = studentDAO.readAllStudents();
+    rank();
   }
   
   public List<Student> getStudents() {
+    if (students.isEmpty())
+      sync();
     return Collections.unmodifiableList(students);
   }
 
@@ -33,7 +48,8 @@ public class Classroom {
   public void add(Student student) {
     student.setId(idCounter++);
     students.add(student);
-    rank();
+    studentDAO.createStudent(student);
+    sync();
   }
   
   public void remove(int idx) {

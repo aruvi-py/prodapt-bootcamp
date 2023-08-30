@@ -2,6 +2,7 @@ package com.prodapt.learningspring;
 
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionEvaluationReport;
@@ -13,7 +14,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 
+import com.prodapt.learningspring.entity.User;
+import com.prodapt.learningspring.repository.UserRepository;
+
 import jakarta.servlet.ServletResponse;
+import jakarta.servlet.http.HttpServletResponse;
 
 @Controller
 public class GreetingController {
@@ -22,6 +27,9 @@ public class GreetingController {
   private ApplicationContext ctx;
   @Autowired
   private RequestMappingHandlerMapping mappings;
+  
+  @Autowired
+  private UserRepository userRepository;
   
   @GetMapping("/greeting")
   public String greeting(
@@ -49,6 +57,12 @@ public class GreetingController {
     var modelAndView = new ModelAndView("mappings");
     modelAndView.addObject("mappings", requestMappings);
     return modelAndView;
+  }
+  
+  @GetMapping("/testing")
+  public void testJpa(HttpServletResponse resp) throws IOException {
+    Optional<User> u = userRepository.findById(1);
+    resp.getWriter().println(u.get().getName());
   }
 
 }

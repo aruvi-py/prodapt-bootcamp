@@ -1,4 +1,4 @@
-package com.prodapt.learningspring.model.wordle;
+package com.prodapt.learningspring.model;
 
 import java.util.ArrayList;
 import java.util.Arrays;

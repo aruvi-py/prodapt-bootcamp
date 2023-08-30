@@ -1,4 +1,4 @@
-package com.prodapt.learningspring.controller.wordle;
+package com.prodapt.learningspring.controller;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.prodapt.learningspring.model.wordle.Wordle;
+import com.prodapt.learningspring.model.Wordle;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;

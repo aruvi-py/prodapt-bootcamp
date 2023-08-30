@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>New Post Form</title>
+</head>
+<body>
+	<h1>Create a new post!</h1>
+	<form method="post" action="#" th:action="@{/forum/post/add}" th:object="${postForm}">
+		<label for="content">Content</label>
+		<textarea id="content" name="content" th:field="*{content}"></textarea>
+		<label for="userdropdown">Select your username</label>
+		<select id="userdropdown" th:field="*{userId}">
+			<option th:each="userOption : ${userList}" th:value="${userOption.id}" th:text="${userOption.name}"></option>
+		</select>
+		<input type="submit" value="Create!">
+	</form>
+</body>
+</html>

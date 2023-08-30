@@ -1,4 +1,4 @@
-package com.prodapt.learningspring.controller.wordle;
+package com.prodapt.learningspring.controller;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,8 +15,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.prodapt.learningspring.model.wordle.Classroom;
-import com.prodapt.learningspring.model.wordle.Student;
+import com.prodapt.learningspring.model.ClassroomService;
+import com.prodapt.learningspring.model.Student;
+import com.prodapt.learningspring.model.dao.StudentDAO;
 
 import jakarta.validation.Valid;
 
@@ -24,25 +25,30 @@ import jakarta.validation.Valid;
 @RequestMapping("/classroom")
 public class ClassroomController {
 
+  
   @Autowired
-  private Classroom classroom;
+  private StudentDAO studentDAO;
+  
+  @Autowired
+  private ClassroomService classroom;
+  
 
   @GetMapping
   public String listAllStudents(Model model) {
-    if (!model.containsAttribute("student"))
-      model.addAttribute("student", new Student());
+    if (!model.containsAttribute("newStudent"))
+      model.addAttribute("newStudent", new Student());
     model.addAttribute("students", classroom.getStudents());
     return "classroom";
   }
 
   @PostMapping("/add")
-  public String addStudent(@Valid Student student, BindingResult bindingResult, RedirectAttributes attr) {
+  public String addStudent(@ModelAttribute("newStudent") @Valid Student newStudent, BindingResult bindingResult, RedirectAttributes attr) {
     if (bindingResult.hasErrors()) {
-      attr.addFlashAttribute("org.springframework.validation.BindingResult.student", bindingResult);
-      attr.addFlashAttribute("student", student);
+      attr.addFlashAttribute("org.springframework.validation.BindingResult.newStudent", bindingResult);
+      attr.addFlashAttribute("newStudent", newStudent);
       return "redirect:/classroom";
     }
-    classroom.add(student);
+    classroom.add(newStudent);
     return "redirect:/classroom";
   }
 
