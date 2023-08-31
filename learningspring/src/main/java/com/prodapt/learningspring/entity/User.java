@@ -9,13 +9,12 @@ import jakarta.persistence.Table;
 import lombok.Data;
 
 @Entity
-@Table(name="User")
 @Data
 public class User {
   @Id
   @GeneratedValue(strategy=GenerationType.IDENTITY)
   private int id;
-  @Column
+  
   private String name;
   
 }

@@ -50,16 +50,12 @@ public class ForumController {
   @PostConstruct
   public void init() {
     userList = new ArrayList<>();
-    userRepository.findAll().forEach(user -> userList.add(user));
-  }
-  
-  private Optional<User> findFromInMemoryListById(int id) {
-    return userList.stream().filter(user -> user.getId() == id).findFirst();
   }
   
   @GetMapping("/post/form")
   public String getPostForm(Model model) {
     model.addAttribute("postForm", new AddPostForm());
+    userRepository.findAll().forEach(user -> userList.add(user));
     model.addAttribute("userList", userList);
     model.addAttribute("authorid", 0);
     return "forum/postForm";
@@ -73,7 +69,7 @@ public class ForumController {
       attr.addFlashAttribute("post", postForm);
       return "redirect:/forum/post/form";
     }
-    Optional<User> user = findFromInMemoryListById(postForm.getUserId());
+    Optional<User> user = userRepository.findById(postForm.getUserId());
     if (user.isEmpty()) {
       throw new ServletException("Something went seriously wrong and we couldn't find the user in the DB");
     }
@@ -93,7 +89,8 @@ public class ForumController {
     }
     model.addAttribute("post", post.get());
     model.addAttribute("userList", userList);
-    int numLikes = likeCountRepository.countByPostId(id);
+    //int numLikes = likeCountRepository.countByPostId(id);
+    int numLikes = likeCRUDRepository.countByLikeIdPost(post.get());
     model.addAttribute("likeCount", numLikes);
     return "forum/postDetail";
   }
@@ -101,7 +98,7 @@ public class ForumController {
   @PostMapping("/post/{id}/like")
   public String postLike(@PathVariable int id, Integer likerId, RedirectAttributes attr) {
     LikeId likeId = new LikeId();
-    likeId.setUser(findFromInMemoryListById(likerId).get());
+    likeId.setUser(userRepository.findById(likerId).get());
     likeId.setPost(postRepository.findById(id).get());
     LikeRecord like = new LikeRecord();
     like.setLikeId(likeId);

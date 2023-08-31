@@ -61,8 +61,8 @@ public class GreetingController {
   
   @GetMapping("/testing")
   public void testJpa(HttpServletResponse resp) throws IOException {
-    Optional<User> u = userRepository.findById(1);
-    resp.getWriter().println(u.get().getName());
+    Optional<User> u = userRepository.findByName("Aruvi");
+    resp.getWriter().println(u.get());
   }
 
 }
