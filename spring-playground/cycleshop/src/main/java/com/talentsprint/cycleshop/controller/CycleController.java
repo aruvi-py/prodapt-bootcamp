@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.talentsprint.cycleshop.business.LoggedInUser;
-import com.talentsprint.cycleshop.entity.User;
+import com.talentsprint.cycleshop.business.NeedsAuth;
 import com.talentsprint.cycleshop.service.CycleService;
 
 
@@ -26,13 +26,15 @@ public class CycleController {
     /*
      * For example, /1/borrow?count=3 borrows 3 cycles of id 1.
      */
-    @GetMapping("/{id}/borrow")
+    @NeedsAuth(loginPage = "/loginpage")
+     @GetMapping("/{id}/borrow")
     public String borrowCycle(@PathVariable long id, @RequestParam(required=false, defaultValue="1") int count) {
         cycleService.borrowCycle(id, count);
         //just a comment
         return "redirect:/cycle/list"; //TODO: redirect to List handler
     }
 
+    @NeedsAuth(loginPage = "/loginpage")
     @GetMapping("/{id}/return")
     public String returnCycle(@PathVariable long id, @RequestParam(required=false, defaultValue="1") int count) {
         cycleService.returnCycle(id, count);
