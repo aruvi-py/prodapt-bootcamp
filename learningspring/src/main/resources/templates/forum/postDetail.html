@@ -9,10 +9,7 @@
 	<p th:text="*{content}">This is a post.</p>
 	<p>Likes: <span th:text="${likeCount}">0</span></p>
 	<form method="post" action="#" th:action="@{/forum/post/{id}/like(id = ${post.id})}">
-		<label for="userdropdown">Select your username</label>
-		<select id="userdropdown" th:name="likerId">
-			<option th:each="userOption : ${userList}" th:value="${userOption.id}" th:text="${userOption.name}"></option>
-		</select>
+		<input type="hidden" th:name="likerName" th:value="${likerName}">
 		<input type="submit" value="Like!">
 	</form>
 </body>
