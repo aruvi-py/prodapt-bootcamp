@@ -59,7 +59,7 @@ public class GreetingController {
     return modelAndView;
   }
   
-  @GetMapping("/testing")
+  @GetMapping("/forum")
   public void testJpa(HttpServletResponse resp) throws IOException {
     Optional<User> u = userRepository.findByName("Aruvi");
     resp.getWriter().println(u.get());

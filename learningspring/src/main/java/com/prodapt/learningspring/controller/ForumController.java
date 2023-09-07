@@ -29,6 +29,7 @@ import com.prodapt.learningspring.repository.LikeCountRepository;
 import com.prodapt.learningspring.repository.PostRepository;
 import com.prodapt.learningspring.repository.UserRepository;
 import com.prodapt.learningspring.service.DomainUserService;
+import com.prodapt.learningspring.service.IFavouritesService;
 
 import jakarta.annotation.PostConstruct;
 import jakarta.servlet.ServletException;
@@ -48,12 +49,23 @@ public class ForumController {
   
   @Autowired
   private LikeCRUDRepository likeCRUDRepository;
+
+  @Autowired
+  private IFavouritesService favouritesService;
   
   private List<User> userList;
   
   @PostConstruct
   public void init() {
     userList = new ArrayList<>();
+  }
+
+  @GetMapping("/favourites")
+  public String getFavourites(Model model, @AuthenticationPrincipal UserDetails userDetails) {
+    User loggedInUser = domainUserService.getByName(userDetails.getUsername()).get();
+    List<Post> postsToDisplay = favouritesService.getFavouritePosts(loggedInUser);
+    model.addAttribute("favourites", postsToDisplay);
+    return "myViewName";
   }
   
   @GetMapping("/post/form")
