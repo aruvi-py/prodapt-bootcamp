@@ -7,9 +7,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import com.talentsprint.cycleshop.business.LoggedInUser;
-import com.talentsprint.cycleshop.business.NeedsAuth;
 import com.talentsprint.cycleshop.service.CycleService;
 
 
@@ -20,21 +17,18 @@ public class CycleController {
     @Autowired
     private CycleService cycleService;
 
-    @Autowired
-    private LoggedInUser loggedInUser;
+    
     
     /*
      * For example, /1/borrow?count=3 borrows 3 cycles of id 1.
      */
-    @NeedsAuth(loginPage = "/loginpage")
-     @GetMapping("/{id}/borrow")
+    @GetMapping("/{id}/borrow")
     public String borrowCycle(@PathVariable long id, @RequestParam(required=false, defaultValue="1") int count) {
         cycleService.borrowCycle(id, count);
         //just a comment
         return "redirect:/cycle/list"; //TODO: redirect to List handler
     }
 
-    @NeedsAuth(loginPage = "/loginpage")
     @GetMapping("/{id}/return")
     public String returnCycle(@PathVariable long id, @RequestParam(required=false, defaultValue="1") int count) {
         cycleService.returnCycle(id, count);
@@ -49,9 +43,6 @@ public class CycleController {
 
     @GetMapping("/list")
     public String listAvailableCycles(Model model) {
-        if (this.loggedInUser.getLoggedInUser() == null) {
-            return "redirect:/loginpage";
-        }
         var allCycles = cycleService.listAvailableCycles();
         model.addAttribute("allCycles", allCycles);
         return "cycleList";
